@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclerHomework">
 
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />

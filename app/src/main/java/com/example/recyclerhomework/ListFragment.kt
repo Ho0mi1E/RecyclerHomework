@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import com.example.recyclerhomework.data.ListofCountry
 import com.example.recyclerhomework.recycler.ChatAdapter
 import com.example.recyclerhomework.recycler.Clicker
 import com.example.recyclerhomework.recycler.Country
@@ -46,13 +47,7 @@ class ListFragment : BottomSheetDialogFragment() {
         recycler.adapter = adapter
 
         adapter.submitList(
-            listOf(
-                Country("Беларусь"),
-                Country("Россия"),
-                Country("Крым"),
-                Country("Америка"),
-                Country("Турция"),
-            )
+            ListofCountry.list
         )
 
     }
