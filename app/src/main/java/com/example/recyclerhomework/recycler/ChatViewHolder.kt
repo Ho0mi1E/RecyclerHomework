@@ -1,7 +1,6 @@
 package com.example.recyclerhomework.recycler
 
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -9,7 +8,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerhomework.R
 
-class ChatViewHolder(item: View,val clickOn:Clicker) : RecyclerView.ViewHolder(item) {
+
+class ChatViewHolder(item: View, private val clickOn:Clicker) : RecyclerView.ViewHolder(item) {
     companion object {
         fun newInstance(parent:ViewGroup,clickOn: Clicker) = ChatViewHolder(LayoutInflater.from(parent.context).inflate(
             R.layout.item,parent,false), clickOn)
