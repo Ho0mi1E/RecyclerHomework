@@ -1,38 +1,35 @@
 package com.example.recyclerhomework
 
-
 import android.os.Bundle
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import com.example.recyclerhomework.data.ListofCountry
 import com.example.recyclerhomework.recycler.ChatAdapter
 import com.example.recyclerhomework.recycler.Clicker
 import com.example.recyclerhomework.recycler.Country
+import com.example.recyclerhomework.recycler.Postman
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-
 import kotlinx.android.synthetic.main.list_fragment.*
 
-class ListFragment : BottomSheetDialogFragment() {
+class ListFragment(message: Postman) : BottomSheetDialogFragment() {
+
     companion object {
-        const val TAG = "LIST"
-        fun newInstance() = ListFragment()
+        const val TAG = "TAG"
     }
 
     private val adapter by lazy { ChatAdapter(clicker) }
+
     private val clicker by lazy {
         object : Clicker {
             override fun clicker(country: Country) {
-                requireActivity().findViewById<EditText>(R.id.edit).setText(country.name)
-                onDestroyView()
-
+                dismiss()
+                message.mail(country)
 
             }
-
         }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
