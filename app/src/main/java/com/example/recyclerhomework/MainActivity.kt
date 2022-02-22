@@ -1,17 +1,16 @@
 package com.example.recyclerhomework
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.recyclerhomework.data.ListofCountry
-import com.example.recyclerhomework.recycler.Country
-import com.example.recyclerhomework.recycler.Postman
+import com.example.recyclerhomework.recycler.domain.models.CountryForView
+import com.example.recyclerhomework.recycler.presintation.ListFragment
+import com.example.recyclerhomework.recycler.presintation.Postman
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         openBottom()
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val list = object : Postman {
-        override fun mail(data: Country) {
+        override fun mail(data: CountryForView) {
             edit.setText(data.name)
         }
     }

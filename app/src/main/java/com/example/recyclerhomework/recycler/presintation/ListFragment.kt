@@ -1,14 +1,12 @@
-package com.example.recyclerhomework
+package com.example.recyclerhomework.recycler.presintation
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.recyclerhomework.data.ListofCountry
-import com.example.recyclerhomework.recycler.ChatAdapter
-import com.example.recyclerhomework.recycler.Clicker
-import com.example.recyclerhomework.recycler.Country
-import com.example.recyclerhomework.recycler.Postman
+import com.example.recyclerhomework.R
+import com.example.recyclerhomework.recycler.data.ListOfCountry
+import com.example.recyclerhomework.recycler.domain.models.CountryForView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.list_fragment.*
 
@@ -20,9 +18,10 @@ class ListFragment(message: Postman) : BottomSheetDialogFragment() {
 
     private val adapter by lazy { ChatAdapter(clicker) }
 
+
     private val clicker by lazy {
         object : Clicker {
-            override fun clicker(country: Country) {
+            override fun clicker(country: CountryForView) {
                 dismiss()
                 message.mail(country)
 
@@ -44,7 +43,7 @@ class ListFragment(message: Postman) : BottomSheetDialogFragment() {
         recycler.adapter = adapter
 
         adapter.submitList(
-            ListofCountry.list
+           ListOfCountry.mapper()
         )
 
     }

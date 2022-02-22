@@ -1,11 +1,12 @@
-package com.example.recyclerhomework.recycler
+package com.example.recyclerhomework.recycler.presintation
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.recyclerhomework.recycler.domain.models.CountryForView
 
 class ChatAdapter(private val clicker: Clicker) : RecyclerView.Adapter<ChatViewHolder>() {
 
-    private var list: List<Country> = emptyList()
+    private var list: List<CountryForView> = emptyList()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
@@ -20,7 +21,7 @@ class ChatAdapter(private val clicker: Clicker) : RecyclerView.Adapter<ChatViewH
         return list.size
     }
 
-    fun submitList(data: List<Country>) {
+    fun submitList(data: List<CountryForView>) {
         list = data
         notifyDataSetChanged()
     }
