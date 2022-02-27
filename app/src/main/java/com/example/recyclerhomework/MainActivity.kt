@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val list = object : Clicker {
-        override fun clicker(data: CountryForView) {
-            edit.setText(data.data)
+        override fun clicker(country: CountryForView) {
+            edit.setText(country.data)
         }
     }
 
