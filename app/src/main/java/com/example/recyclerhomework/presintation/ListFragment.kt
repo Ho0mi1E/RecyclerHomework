@@ -1,16 +1,18 @@
-package com.example.recyclerhomework.recycler.presintation
+package com.example.recyclerhomework.presintation
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.recyclerhomework.R
-import com.example.recyclerhomework.recycler.data.ListOfCountry
-import com.example.recyclerhomework.recycler.domain.models.CountryForView
+
+import com.example.recyclerhomework.domain.models.CountryForView
+import com.example.recyclerhomework.presintation.clickandpost.Clicker
+import com.example.recyclerhomework.presintation.recycler.ChatAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.list_fragment.*
 
-class ListFragment(message: Postman) : BottomSheetDialogFragment() {
+class ListFragment(private val viewModel: ViewModelCountry,message: Clicker) : BottomSheetDialogFragment() {
 
     companion object {
         const val TAG = "TAG"
@@ -23,7 +25,7 @@ class ListFragment(message: Postman) : BottomSheetDialogFragment() {
         object : Clicker {
             override fun clicker(country: CountryForView) {
                 dismiss()
-                message.mail(country)
+                message.clicker(country)
 
             }
         }
@@ -38,14 +40,13 @@ class ListFragment(message: Postman) : BottomSheetDialogFragment() {
         return inflater.inflate(R.layout.list_fragment, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
+
+        viewModel.countryLiveData.observe(viewLifecycleOwner){list ->
+            adapter.submitList(list)
+        }
         recycler.adapter = adapter
-
-        adapter.submitList(
-           ListOfCountry.mapper()
-        )
-
     }
 }
 

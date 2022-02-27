@@ -1,8 +1,9 @@
-package com.example.recyclerhomework.recycler.presintation
+package com.example.recyclerhomework.presintation.recycler
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recyclerhomework.recycler.domain.models.CountryForView
+import com.example.recyclerhomework.domain.models.CountryForView
+import com.example.recyclerhomework.presintation.clickandpost.Clicker
 
 class ChatAdapter(private val clicker: Clicker) : RecyclerView.Adapter<ChatViewHolder>() {
 
