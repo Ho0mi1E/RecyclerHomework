@@ -9,16 +9,18 @@ import com.example.recyclerhomework.domain.models.CountryForView
 import com.example.recyclerhomework.domain.interactor.CountriesInteractor
 import com.example.recyclerhomework.domain.CountriesRepository
 
-class ViewModelCountry : ViewModel() {
-init {
-loadCountries()
-}
+class ViewModelCountry(val interactor: CountriesInteractor) : ViewModel() {
+
     val countryLiveData: LiveData<List<CountryForView>> get() = _countryLiveData
     private val _countryLiveData = MutableLiveData<List<CountryForView>>()
-    private val repository: CountriesRepository = ListOfCountry
-    private val interactor: CountriesInteractor = CountriesInteractorImpl(repository)
+    init {
+        loadCountries()
+    }
 
-    private fun loadCountries(){
-        _countryLiveData.value=interactor.getCountries()
+
+
+
+    private fun loadCountries() {
+        _countryLiveData.value = interactor.getCountries()
     }
 }
