@@ -10,4 +10,10 @@ class CountriesInteractorImpl(private val repository: CountriesRepository) : Cou
             CountryForView(country.name)
         }
     }
+
+    override fun updateCountries(): List<CountryForView> {
+        return repository.getUpdate().map { country ->
+            CountryForView(country.name)
+        }
+    }
 }

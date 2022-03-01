@@ -12,7 +12,13 @@ object ListOfCountry : CountriesRepository {
         Country("Америка", "Вашингтон"),
         Country("Турция", "Станбул")    )
 
+    private val list1 = listOf<Country>(
+        Country("Египет","Каир"),
+        Country("Австралия","Камббера"),
+        Country("Китай","Пекин"),
+        Country("Египет","Каир"),
+    )
+
     override fun getCountries(): List<Country> = list
-
-
+    override fun getUpdate(): List<Country> = list1
 }
