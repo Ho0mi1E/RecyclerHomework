@@ -20,13 +20,12 @@ class ListFragment(private val viewModel: ViewModelCountry, message: Clicker) :
     }
 
     private val adapter by lazy { ChatAdapter(clicker) }
-
-
     private val clicker by lazy {
         object : Clicker {
             override fun clicker(country: CountryForView) {
                 dismiss()
                 message.clicker(country)
+                viewModel.loadCountries()
 
             }
         }
@@ -38,16 +37,41 @@ class ListFragment(private val viewModel: ViewModelCountry, message: Clicker) :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
+
+
         return inflater.inflate(R.layout.list_fragment, container, false)
+
     }
 
     override fun onStart() {
         super.onStart()
-
+        updateView()
         viewModel.countryLiveData.observe(viewLifecycleOwner) { list ->
             adapter.submitList(list)
         }
         recycler.adapter = adapter
     }
+
+
+    private fun updateView(){
+        var flag = true
+        btn.setOnClickListener {
+            if (flag){
+                viewModel.update()
+                flag = false
+            }else{
+                viewModel.loadCountries()
+                flag = true
+
+            }
+
+
+        }
+    }
+
+
+
 }
 
