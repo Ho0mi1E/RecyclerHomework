@@ -30,20 +30,12 @@ class ListFragment(private val viewModel: ViewModelCountry, message: Clicker) :
             }
         }
     }
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-
-
-        return inflater.inflate(R.layout.list_fragment, container, false)
-
-    }
+        return inflater.inflate(R.layout.list_fragment, container, false) }
 
     override fun onStart() {
         super.onStart()
@@ -53,25 +45,17 @@ class ListFragment(private val viewModel: ViewModelCountry, message: Clicker) :
         }
         recycler.adapter = adapter
     }
-
-
-    private fun updateView(){
+    private fun updateView() {
         var flag = true
         btn.setOnClickListener {
-            if (flag){
+            if (flag) {
                 viewModel.update()
                 flag = false
-            }else{
+            } else {
                 viewModel.loadCountries()
                 flag = true
 
             }
-
-
         }
     }
-
-
-
 }
-
