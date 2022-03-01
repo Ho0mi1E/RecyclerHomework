@@ -1,7 +1,6 @@
 package com.example.recyclerhomework
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.recyclerhomework.domain.models.CountryForView
 import com.example.recyclerhomework.presintation.ListFragment
@@ -15,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     private val viewModelCountry: ViewModelCountry by viewModel<ViewModelCountry>()
 
 
-     override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -25,19 +24,19 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         openBottom()
     }
+
     private val list = object : Clicker {
         override fun clicker(country: CountryForView) {
             edit.setText(country.data)
         }
     }
+
     private fun openBottom() {
-        val fragment = ListFragment(viewModelCountry,list)
+        val fragment = ListFragment(viewModelCountry, list)
         edit.setOnClickListener {
             fragment.show(supportFragmentManager, ListFragment.TAG)
         }
     }
-
-
 
 
 }

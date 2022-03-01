@@ -13,11 +13,10 @@ class ViewModelCountry(val interactor: CountriesInteractor) : ViewModel() {
 
     val countryLiveData: LiveData<List<CountryForView>> get() = _countryLiveData
     private val _countryLiveData = MutableLiveData<List<CountryForView>>()
+
     init {
         loadCountries()
     }
-
-
 
 
     private fun loadCountries() {

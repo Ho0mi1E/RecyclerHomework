@@ -7,11 +7,8 @@ import com.example.recyclerhomework.domain.interactor.CountriesInteractorImpl
 import org.koin.dsl.module
 
 val domainModule = module {
-    single<CountriesInteractor>{
+    single<CountriesInteractor> {
         CountriesInteractorImpl(repository = get())
-
     }
-
-    single<CountriesRepository> {ListOfCountry}
-
+    single<CountriesRepository> { ListOfCountry }
 }

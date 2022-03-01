@@ -12,7 +12,8 @@ import com.example.recyclerhomework.presintation.recycler.ChatAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.list_fragment.*
 
-class ListFragment(private val viewModel: ViewModelCountry,message: Clicker) : BottomSheetDialogFragment() {
+class ListFragment(private val viewModel: ViewModelCountry, message: Clicker) :
+    BottomSheetDialogFragment() {
 
     companion object {
         const val TAG = "TAG"
@@ -43,7 +44,7 @@ class ListFragment(private val viewModel: ViewModelCountry,message: Clicker) : B
     override fun onStart() {
         super.onStart()
 
-        viewModel.countryLiveData.observe(viewLifecycleOwner){list ->
+        viewModel.countryLiveData.observe(viewLifecycleOwner) { list ->
             adapter.submitList(list)
         }
         recycler.adapter = adapter
