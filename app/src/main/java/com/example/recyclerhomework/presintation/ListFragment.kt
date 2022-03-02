@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.recyclerhomework.R
 
 import com.example.recyclerhomework.domain.models.CountryForView
@@ -30,6 +31,8 @@ class ListFragment(private val viewModel: ViewModelCountry, message: Clicker) :
             }
         }
     }
+
+    private val itemTouchHelper by lazy {  ItemTouchHelper(SwipeToDelete(adapter))}
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,6 +48,10 @@ class ListFragment(private val viewModel: ViewModelCountry, message: Clicker) :
         }
         recycler.adapter = adapter
     }
+    override fun onResume() {
+        super.onResume()
+        itemTouchHelper.attachToRecyclerView(recycler)
+    }
     private fun updateView() {
         var flag = true
         btn.setOnClickListener {
@@ -58,4 +65,6 @@ class ListFragment(private val viewModel: ViewModelCountry, message: Clicker) :
             }
         }
     }
+
+
 }

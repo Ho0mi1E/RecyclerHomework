@@ -12,7 +12,7 @@
         android:theme="@style/Theme.RecyclerHomework">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".presintation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />

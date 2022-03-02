@@ -1,17 +1,21 @@
-package com.example.recyclerhomework
+package com.example.recyclerhomework.presintation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.recyclerhomework.R
 import com.example.recyclerhomework.domain.models.CountryForView
-import com.example.recyclerhomework.presintation.ListFragment
-import com.example.recyclerhomework.presintation.ViewModelCountry
 import com.example.recyclerhomework.presintation.clickandpost.Clicker
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModelCountry: ViewModelCountry by viewModel<ViewModelCountry>()
+    private val viewModelCountry: ViewModelCountry by viewModel()
+    private val list = object : Clicker {
+        override fun clicker(country: CountryForView) {
+            edit.setText(country.data)
+        }
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,11 +29,7 @@ class MainActivity : AppCompatActivity() {
         openBottom()
     }
 
-    private val list = object : Clicker {
-        override fun clicker(country: CountryForView) {
-            edit.setText(country.data)
-        }
-    }
+
 
     private fun openBottom() {
         val fragment = ListFragment(viewModelCountry, list)
@@ -38,10 +38,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        viewModelCountry.loadCountries()
-    }
+
+
+
 
 
 

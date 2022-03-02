@@ -10,6 +10,7 @@ class ChatAdapter(private val clicker: Clicker) : RecyclerView.Adapter<ChatViewH
     private var list: List<CountryForView> = emptyList()
 
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         return ChatViewHolder.newInstance(parent, clicker)
     }
@@ -25,5 +26,12 @@ class ChatAdapter(private val clicker: Clicker) : RecyclerView.Adapter<ChatViewH
     fun submitList(data: List<CountryForView>) {
         list = data
         notifyDataSetChanged()
+    }
+
+    fun deleteItem(pos: Int){
+        list.toMutableList().removeAt(pos)
+        notifyItemRemoved(pos)
+
+
     }
 }
