@@ -10,9 +10,7 @@ class SwipeToDelete(private val adapter: ChatAdapter ) : ItemTouchHelper.SimpleC
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
-    ): Boolean {
-        TODO("Not yet implemented")
-    }
+    ): Boolean = false
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         val pos = viewHolder.adapterPosition
